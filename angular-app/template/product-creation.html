@@ -1,0 +1,40 @@
+<div class="span 6">
+    <br/>
+    <h1>Create a new product:</h1>
+    <p class="bg-danger" ng-hide="{{ !!error }}">{{ error }}</p>
+    <form>
+        <div class="form-group">
+            <label for="externalId">External ID</label>
+            <input type="text" class="form-control" id="externalId" placeholder="External ID"
+                   ng-model="product.externalId">
+        </div>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" ng-model="product.name">
+        </div>
+
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" placeholder="Brand" ng-model="product.brand">
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" placeholder="Price" ng-model="product.price">
+        </div>
+
+        <div class="form-group">
+            <label for="size">Size</label>
+            <input type="number" class="form-control" id="size" placeholder="Price" ng-model="product.size">
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" class="form-control" id="amount" placeholder="Amount" ng-model="product.amount">
+        </div>
+
+        <a class="btn btn-danger" ng-click="cancel()">Cancel</a>
+        <a class="btn btn-primary" ng-click="createNewProduct()">Create new product</a>
+    </form>
+</div>

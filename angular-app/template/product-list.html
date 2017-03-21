@@ -1,0 +1,58 @@
+<div class="span 6">
+    <br/>
+    <form class="form-inline" role="form">
+        <a ng-click="login()" ng-show="!readOnly" class="btn btn-small btn-primary">Login</a>
+        <a ng-click="logout()" ng-show="readOnly" class="btn btn-small btn-danger">Logout</a>
+    </form>
+    <br/>
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search by name or brand" ng-model="query">
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-default" ng-click="getProductList(query)">Show products</button>
+            <a href="http://localhost:8080/product.csv{{ !query ? '' : '?q=' + query }}"
+               class="btn btn-small btn-primary" target="_blank">Download as CSV</a>
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="getEndingProductList()">Show ending products
+        </button>
+        <a ng-click="createNewProduct()" ng-show="readOnly" class="btn btn-small btn-primary">Create new product</a>
+    </form>
+    <br/>
+    <table class="table table-hover table-striped table-bordered table-responsive">
+        <thead>
+        <tr>
+            <td>External ID</td>
+            <td>Name</td>
+            <td>Brand</td>
+            <td>Price</td>
+            <td>Size</td>
+            <td>Amount</td>
+            <td>Action</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in products">
+            <td>{{product.externalId}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.brand}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.size}}</td>
+            <td>{{product.amount}}</td>
+            <td>
+                <a class="btn btn-small btn-primary" ng-click="editProduct(product.id)">{{ !readOnly ? 'Show' :
+                    'Edit'}}</a>
+                <a class="btn btn-small btn-danger" ng-click="deleteProduct(product.id)" ng-show="readOnly">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <form ng-show="readOnly">
+        <div class="form-group">
+            <label for="file">File upload</label>
+            <input type="file" id="file" file-model="file">
+        </div>
+        <button type="submit" class="btn btn-small" ng-click="uploadProducts()">Upload</button>
+    </form>
+</div>
